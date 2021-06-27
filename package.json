@@ -1,0 +1,18 @@
+{
+	"name": "root",
+	"private": true,
+	"version": "0.0.1",
+	"devDependencies": {
+		"lerna": "^4.0.0"
+	},
+	"scripts": {
+		"start": "lerna run start",
+		"client": "lerna run start --scope=client",
+		"server": "lerna run start --scope={redis-server,auth-service,events-service}",
+		"redis-server": "lerna run start --scope=redis-server",
+		"auth-service": "lerna run start --scope=auth-service",
+		"events-service": "lerna run start --scope=events-service",
+		"new-version": "lerna version --conventional-commits --yes",
+		"diff": "lerna diff"
+	}
+}
