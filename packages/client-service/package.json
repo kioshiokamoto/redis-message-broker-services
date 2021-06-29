@@ -1,8 +1,9 @@
 {
-	"name": "redis-server",
+	"name": "client-service",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
 		"start": "node index.js",
 		"dev": "nodemon index.js"
@@ -11,9 +12,14 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"bcrypt": "^5.0.1",
 		"consola": "^2.15.3",
 		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
-		"redis": "^3.1.2"
+		"jsonwebtoken": "^8.5.1",
+		"mysql": "^2.18.1",
+		"redis": "^3.1.2",
+		"socket.io": "^2.4.1"
 	}
 }
