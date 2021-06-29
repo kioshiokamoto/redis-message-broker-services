@@ -25,6 +25,7 @@ const client = redis.createClient({
 });
 
 const event = 'events';
+
 client.subscribe(event);
 //Se recibe mensaje de administrador con redis
 client.on('message', (channel, message) => {

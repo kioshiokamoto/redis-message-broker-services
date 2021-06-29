@@ -14,3 +14,7 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
 	consola.success({ badge: true, message: `Servidor ejecutandose en puerto ${PORT}` });
 });
+
+// Ejemplos de queries
+// const objeto = await pool.query('SELECT * FROM test_usuario WHERE idusuario = ?', rows[0].idusuario);
+//  const result = await pool.query('INSERT INTO usuarios SET ? ', [newUser]);
