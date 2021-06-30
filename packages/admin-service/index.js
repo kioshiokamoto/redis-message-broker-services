@@ -3,12 +3,22 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import consola from 'consola';
 import adminRoutes from './routes/adminRoutes.js';
+import pool from './utils/db.js';
 dotenv.config();
+
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 app.use('/api/admin', adminRoutes);
+
+const demoDb = async () => {
+	const demo = await pool.query('SHOW TABLES');
+	console.log(demo);
+};
+
+demoDb();
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {

@@ -1,11 +1,14 @@
-const mysql = require('mysql');
-const { promisify } = require('util');
+import mysql from 'mysql';
+import { promisify } from 'util';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const pool = mysql.createPool({
 	host: process.env.DB_HOST,
 	database: process.env.DB_DATABASE,
 	user: process.env.DB_USER,
 	password: process.env.DB_PASSWORD,
+	port: process.env.PORT,
 });
 
 pool.getConnection((err, connection) => {
@@ -22,6 +25,7 @@ pool.getConnection((err, connection) => {
 	}
 
 	if (connection) connection.release();
+
 	console.log('Conectado a la base de datos');
 
 	return;
