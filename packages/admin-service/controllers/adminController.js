@@ -177,11 +177,6 @@ const adminCtrl = {
 };
 export default adminCtrl;
 
-function validateEmail(email) {
-	const re =
-		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	return re.test(email);
-}
 function createAdminToken(payload) {
 	return jwt.sign(payload, process.env.ADMIN_TOKEN_SECRET, { expiresIn: '7d' });
 }

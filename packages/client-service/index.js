@@ -25,7 +25,6 @@ const client = redis.createClient({
 });
 
 const event = 'events';
-
 client.subscribe(event);
 //Se recibe mensaje de administrador con redis
 client.on('message', (channel, message) => {
@@ -36,6 +35,7 @@ client.on('message', (channel, message) => {
 	io.sockets.emit('test', 'prueba');
 });
 
-server.listen(3001, () => {
-	consola.success({ badge: true, message: 'Servidor ejecutandose en puerto 3001' });
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+	consola.success({ badge: true, message: `Servidor ejecutandose en puerto ${PORT}` });
 });
