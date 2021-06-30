@@ -8,10 +8,9 @@
 	"scripts": {
 		"start": "lerna run start",
 		"client": "lerna run start --scope=client",
-		"server": "lerna run start --scope={redis-server,auth-service,events-service}",
-		"redis-server": "lerna run start --scope=redis-server",
-		"auth-service": "lerna run start --scope=auth-service",
-		"events-service": "lerna run start --scope=events-service",
+		"server": "lerna run start --scope={admin-service,client-service}",
+		"client-service": "lerna run start --scope=client-service",
+		"admin-service": "lerna run start --scope=admin-service",
 		"new-version": "lerna version --conventional-commits --yes",
 		"diff": "lerna diff"
 	}
