@@ -1,3 +1,4 @@
+CREATE DATABASE db_mbroker;
 USE db_mbroker;
 
 CREATE TABLE usuario(
