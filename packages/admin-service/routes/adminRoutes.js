@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/login', adminCtrl.login);
 router.post('/create', auth, adminCtrl.createPost);
+router.post('/addAdmin', adminCtrl.createAdmin);
 router.get('/categories', auth, adminCtrl.getCategories);
 router.patch('/:id', auth, adminCtrl.editPost);
 router.delete('/:id', auth, adminCtrl.deletePost);
