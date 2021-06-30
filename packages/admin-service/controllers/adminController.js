@@ -45,6 +45,32 @@ const adminCtrl = {
 				ev_direccionEvento,
 				ev_precioEvento,
 			} = req.body;
+			const d = new Date(ev_fechaEvento);
+			const fechaEventoParsed = d.toISOString().split('T')[0] + ' ' + d.toTimeString().split(' ')[0];
+			console.log('Fecha ' + fechaEventoParsed);
+
+			const demo = await pool.query(
+				`insert into evento
+				(idGenero,
+				ev_nombreEvento,
+				ev_fechaEvento,
+				ev_departamento,
+				ev_provincia,
+				ev_direccionEvento,
+				ev_precioEvento,)
+				values
+			   	(?,?,?,?,?,?,?);`,
+				{
+					idGenero,
+					ev_nombreEvento,
+					ev_fechaEvento: fechaEventoParsed,
+					ev_departamento,
+					ev_provincia,
+					ev_direccionEvento,
+					ev_precioEvento,
+				}
+			);
+			res.json({ message: 'Evento se creo correctamente' });
 		} catch (error) {
 			return res.status(500).json({ msg: error.message });
 		}
