@@ -5,7 +5,7 @@ CREATE TABLE usuario(
 	us_rol boolean default 0, -- 0 es cliente , 1 admin 
 	us_nombre varchar(45) NOT NULL,
 	us_apellido varchar(45) NOT NULL,
-	us_correo varchar(45) NOT NULL,
+	us_correo varchar(45) NOT NULL UNIQUE,
 	us_password varchar(45) NOT NULL,
 	us_departamento varchar(45) NOT NULL,
 	us_provincia varchar(45) NOT NULL,
