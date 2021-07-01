@@ -28,11 +28,12 @@ const event = 'events';
 client.subscribe(event);
 //Se recibe mensaje de administrador con redis
 client.on('message', (channel, message) => {
-	console.log("Se recibó un mensaje en el canal '" + channel + "': " + message);
+	//console.log("Se recibó un mensaje en el canal '" + channel + "': " + message);
 	//Se procesa informacion
-	console.log(JSON.parse(message));
+	const mensaje = JSON.parse(message);
+	//console.log(JSON.parse(message));
 	//Se distribuye notificaciones a cliente
-	io.sockets.emit('test', 'prueba');
+	io.sockets.emit(mensaje.idGenero, JSON.stringify(message));
 });
 
 const PORT = process.env.PORT || 3001;
