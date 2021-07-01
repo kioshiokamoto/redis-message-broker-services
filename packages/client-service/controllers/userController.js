@@ -30,7 +30,7 @@ const userCtrl = {
 		try {
 			const { email, password } = req.body;
 			const user = await pool.query('SELECT * FROM USUARIO WHERE us_correo= ?', email);
-			if (!user) {
+			if (user.length === 0) {
 				return res.status(400).json({ error: 'Este correo electrónico no existe' });
 			}
 			if (user[0].us_rol !== 0) {
@@ -38,7 +38,9 @@ const userCtrl = {
 			}
 
 			const isMatch = await bcrypt.compare(password, user[0].us_password);
-			if (!isMatch) return res.status(400).json({ error: 'La contraseña es incorrecta' });
+			if (!isMatch) {
+				return res.status(400).json({ error: 'La contraseña es incorrecta' });
+			}
 
 			const user_token = createUserToken({ id: user[0].idUsuario });
 

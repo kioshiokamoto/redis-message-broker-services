@@ -14,8 +14,8 @@ const adminCtrl = {
 		try {
 			const { email, password } = req.body;
 			const user = await pool.query('SELECT * FROM USUARIO WHERE us_correo= ?', email);
-			if (!user) {
-				return res.status(400).json({ msg: 'Este correo electrónico no existe' });
+			if (user.length === 0) {
+				return res.status(400).json({ error: 'Este correo electrónico no existe' });
 			}
 
 			if (user[0].us_rol !== 1) {
