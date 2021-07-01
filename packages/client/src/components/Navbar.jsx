@@ -8,10 +8,10 @@ export default function Navbar() {
         <div>
             <ul>
             <li >
-                 <NavLink exact to="/" > <Text fontSize="6xl" ml="2">Link 1</Text></NavLink>
+                 <NavLink exact to="/" > <Text fontSize="6xl" ml="2">Home</Text></NavLink>
             </li>
             <li >
-                <NavLink exact to="/pageTwo"><Text fontSize="6xl" ml="2">Link 2</Text></NavLink>
+                <NavLink exact to="/pageTwo"><Text fontSize="6xl" ml="2">Explorar</Text></NavLink>
             </li>
             </ul>
         </div>
