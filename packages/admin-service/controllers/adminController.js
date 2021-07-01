@@ -28,7 +28,7 @@ const adminCtrl = {
 
 			res.json({ token: admin_token });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	createPost: async (req, res) => {
@@ -62,7 +62,7 @@ const adminCtrl = {
 
 			res.json({ message: 'Evento se creo correctamente' });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	getCategories: async (req, res) => {
@@ -70,7 +70,7 @@ const adminCtrl = {
 			const categories = await pool.query('SELECT idGenero, gn_nombreGenero FROM genero');
 			res.json(categories);
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	editPost: async (req, res) => {
@@ -87,7 +87,7 @@ const adminCtrl = {
 			const idEvento = req.params.id;
 			const checkEvent = await pool.query('SELECT * FROM EVENTO WHERE idEvento = ?', idEvento);
 			if (!checkEvent) {
-				return res.status(404).json({ msg: 'Evento no existe' });
+				return res.status(404).json({ error: 'Evento no existe' });
 			}
 
 			if (idGenero) {
@@ -134,7 +134,7 @@ const adminCtrl = {
 			}
 			res.json({ message: 'Evento se creo correctamente' });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	deletePost: async (req, res) => {
@@ -142,12 +142,12 @@ const adminCtrl = {
 			const idEvento = req.params.id;
 			const checkEvent = await pool.query('SELECT * FROM EVENTO WHERE idEvento = ?', idEvento);
 			if (!checkEvent) {
-				return res.status(404).json({ msg: 'Evento no existe' });
+				return res.status(404).json({ error: 'Evento no existe' });
 			}
 			const query = await pool.query('DELETE FROM EVENTO WHERE idEvento =?', [idEvento]);
 			res.json({ message: 'Evento se elimino correctamente' });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	getAllPost: async (req, res) => {
@@ -155,7 +155,7 @@ const adminCtrl = {
 			const eventos = await pool.query('SELECT * FROM evento');
 			res.json(eventos);
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	createAdmin: async (req, res) => {
@@ -171,7 +171,7 @@ const adminCtrl = {
 			);
 			res.json({ message: 'Admin creado correctamente' });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 };

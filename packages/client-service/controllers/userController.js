@@ -23,7 +23,7 @@ const userCtrl = {
 			);
 			res.json({ message: 'Usuario creado correctamente' });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	login: async (req, res) => {
@@ -31,38 +31,59 @@ const userCtrl = {
 			const { email, password } = req.body;
 			const user = await pool.query('SELECT * FROM USUARIO WHERE us_correo= ?', email);
 			if (!user) {
-				return res.status(400).json({ msg: 'Este correo electrónico no existe' });
+				return res.status(400).json({ error: 'Este correo electrónico no existe' });
 			}
 			if (user[0].us_rol !== 0) {
-				return res.status(400).json({ msg: 'Debe ingresar como administrador' });
+				return res.status(400).json({ error: 'Debe ingresar como administrador' });
 			}
 
 			const isMatch = await bcrypt.compare(password, user[0].us_password);
-			if (!isMatch) return res.status(400).json({ msg: 'La contraseña es incorrecta' });
+			if (!isMatch) return res.status(400).json({ error: 'La contraseña es incorrecta' });
 
-			const user_token = createUserToken({ id: user.idUsuario });
+			const user_token = createUserToken({ id: user[0].idUsuario });
 
 			res.json({ token: user_token });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	saveQuest: async (req, res) => {
 		try {
+			await pool.query('DELETE FROM generoxusuario WHERE idUsuario = ?', [req.user.id]);
+
+			const { categories } = req.body;
+			categories.map(async (category) => {
+				const generoxusuario = await pool.query(
+					'INSERT INTO generoxusuario (idUsuario,idGenero) values (?,?) ',
+					[req.user.id, category]
+				);
+			});
+			res.json({ message: 'Encuesta guardada correctamente' });
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 	getAllPost: async (req, res) => {
 		try {
+			const eventos = await pool.query(
+				`SELECT * FROM evento E
+											WHERE E.idGenero IN (
+											SELECT GU.idGenero 
+											FROM generoxusuario GU
+											WHERE GU.idUsuario=?); `,
+				[req.user.id]
+			);
+			res.json(eventos);
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
-	getSinglePost: async (req, res) => {
+	getAllCategories: async (req, res) => {
 		try {
+			const categories = await pool.query('SELECT idGenero, gn_nombreGenero FROM genero');
+			res.json(categories);
 		} catch (error) {
-			return res.status(500).json({ msg: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 };

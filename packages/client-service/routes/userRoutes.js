@@ -7,6 +7,6 @@ router.post('/register', userCtrl.register);
 router.get('/login', userCtrl.login);
 router.post('/saveQuest', auth, userCtrl.saveQuest);
 router.get('/posts', auth, userCtrl.getAllPost);
-router.get('/post/:id', auth, userCtrl.getSinglePost);
+router.get('/categories', auth, userCtrl.getAllCategories);
 
 export default router;
