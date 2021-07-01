@@ -1,4 +1,4 @@
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://thumbs.dreamstime.com/b/cabecera-de-banner-concepto-arquitectura-empresarial-planificaci%C3%B3n-operaciones-empresariales-integraci%C3%B3n-la-tecnolog%C3%ADa-software-162417753.jpg)
 
 # Aplicación web de eventos(WIP)
 
@@ -8,6 +8,10 @@
 ## Tech Stack
 
 **Server:** Node, Express, Redis, Mysql
+
+-   Despliegue backend usuario: [Usuario](https://demo-2-arquitectura-client.herokuapp.com)
+
+-   Despliegue backend admin: [Administrador](https://demo-2-arquitectura-admin.herokuapp.com)
 
 **Client:** Reactjs
 
