@@ -86,6 +86,14 @@ const userCtrl = {
 			return res.status(500).json({ error: error.message });
 		}
 	},
+	getCategoriesXUser: async (req, res) => {
+		try {
+			const categories = await pool.query('SELECT * FROM generoxusuario where idUsuario = ?', [req.user.id]);
+			res.json(categories);
+		} catch (error) {
+			return res.status(500).json({ error: error.message });
+		}
+	},
 };
 export default userCtrl;
 
