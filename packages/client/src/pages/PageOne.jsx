@@ -1,9 +1,68 @@
 import React from 'react'
+import '../styles/register.css'
+import VIcon from '../components/VIcon/Logo'
+import { Box, Text, FormControl, FormLabel, Input, Button, Image } from "@chakra-ui/react"
 
 export default function pageOne() {
     return (
         <div>
-            <h1>Page one</h1>
+            <div className="ConteinerFondo">
+                <Image src="Celebration-pana 1.svg"/>
+            </div>
+            <div className="ConteinerForm">
+                <Box ml="50" width="400px">
+                        <Text
+                        color="#525252"
+                        fontFamily="Poppins" 
+                        fontStyle="normal"
+                        fontSize="18px"
+                        p="10">Registrarse</Text>
+                        <VIcon ></VIcon>
+                        <Text 
+                        color="#9C94F2"
+                        fontFamily="Poppins" 
+                        fontStyle="normal"
+                        fontSize="30px"
+                        p="1">Inicio de sesión</Text>
+                        <Text
+                        color="#525252" 
+                        fontFamily="Poppins" 
+                        fontStyle="normal"
+                        fontSize="20px"
+                        p="1">¡Bienvenido otra vez a Eventimor!</Text>
+                        <form>
+                            <FormControl>
+                                <FormLabel 
+                                color="#525252" 
+                                fontFamily="Poppins" 
+                                fontStyle="normal" 
+                                fontSize="18px"
+                                p="3">Correo electrónico</FormLabel>
+                                <Input borderColor="Black" 
+                                type="text"/>
+                            </FormControl>
+                            <FormControl>
+                                <FormLabel 
+                                color="#525252" 
+                                fontFamily="Poppins" 
+                                fontStyle="normal" 
+                                fontSize="18px"
+                                p="3">Contraseña</FormLabel>
+                                <Input borderColor="Black"
+                                type="password"/>
+                            </FormControl>
+                            <Box p="7">
+                                <Button width="100%"
+                                bg="#A179D9"
+                                color="#FFFFFF"
+                                fontFamily="Poppins" 
+                                fontStyle="normal"
+                                fontSize="20px"
+                                borderRadius="7px">Iniciar Sesión</Button>
+                            </Box>
+                        </form>
+                    </Box>
+            </div>
         </div>
     )
 }

@@ -52,6 +52,7 @@ import Storage from './Storage'
 import Message from './Message'
 import Cart from './Cart'
 import LogoDemo1 from './LogoDemo1'
+import Logo from './Logo'
 
 /**
  *
@@ -164,6 +165,8 @@ function VIcon ({ name, color, size, pointer, disabled = false, ...props }) {
       return <Calendar {...props} style={style} color={_color} />
     case 'history':
       return <History {...props} style={style} color={_color} />
+    case 'logo':
+      return <Logo {...props} style={style} color={_color} />
     default:
       return null
   }
