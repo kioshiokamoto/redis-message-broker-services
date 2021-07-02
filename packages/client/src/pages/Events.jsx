@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text,Box, Grid, Flex, Button, useDisclosure,Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter, ModalHeader, FormControl,FormLabel, Input,Select} from "@chakra-ui/react"
+import { Text, Box, Grid, Flex, Button, useDisclosure,Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter, ModalHeader, FormControl,FormLabel, Input,Select} from "@chakra-ui/react"
 import CardModal from '../components/CardModal'
 export default function Events() {
     const { isOpen, onOpen, onClose } = useDisclosure()

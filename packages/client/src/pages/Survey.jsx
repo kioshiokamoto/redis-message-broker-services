@@ -12,13 +12,7 @@ export default function survey(){
             <div>
                 <Box>
                     <Text 
-                    color="#304659"
-                    fontFamily="Poppins" 
-                    fontStyle="normal"
-                    fontSize="40px"
-                    textAlign="center"
-                    justify-content ="center"
-                    p="4">Encuesta</Text>
+                    fontSize="4xl" py="5" align="center" fontWeight="semibold">Encuesta</Text>
                     <form> 
                         <FormControl>
                             <FormLabel 

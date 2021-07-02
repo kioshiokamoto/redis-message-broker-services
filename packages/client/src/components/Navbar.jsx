@@ -22,10 +22,10 @@ export default function Navbar() {
                 <VIcon name="logo"/>
                 <ul className="list-items">
                     <li>
-                        <NavLink exact to="/" activeClassName="activeLink"> Mis eventos</NavLink>
+                        <NavLink exact to="/events" activeClassName="activeLink"> Mis eventos</NavLink>
                     </li>
                     <li>
-                        <NavLink exact to="/pageTwo" activeClassName="activeLink">Encuesta</NavLink>
+                        <NavLink exact to="/survey" activeClassName="activeLink">Encuesta</NavLink>
                     </li>
                 </ul>
                 <Flex align="center">
