@@ -1,17 +1,17 @@
-import React, { createContext, useReducer } from "react"
-import reducers from "./Reducer"
+import React, { createContext, useReducer } from "react";
+import reducers from "./Reducer";
 
 export const DataContext = createContext({
   state: {},
-  dispatch: () => null
-})
+  dispatch: () => null,
+});
 
 export const DataProvider = ({ children }) => {
   const initialState = {
     auth: {},
-    logged:false
-  }
-  const [state, dispatch] = useReducer(reducers, initialState)
+    logged: false,
+  };
+  const [state, dispatch] = useReducer(reducers, initialState);
 
   return (
     <>
@@ -19,5 +19,5 @@ export const DataProvider = ({ children }) => {
         {children}
       </DataContext.Provider>
     </>
-  )
-}
+  );
+};
