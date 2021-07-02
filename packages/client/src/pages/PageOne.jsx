@@ -2,8 +2,15 @@ import React from 'react'
 import '../styles/register.css'
 import VIcon from '../components/VIcon/Logo'
 import { Box, Text, FormControl, FormLabel, Input, Button, Image } from "@chakra-ui/react"
+import { useForm } from '../hooks/useForm'
 
-export default function pageOne() {
+export default function PageOne() {
+    const [values, handleInputChange] = useForm({ email:"", password:""})
+    const { email, password} = values
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(values)
+    }
     return (
         <div>
             <div className="ConteinerFondo">
@@ -30,7 +37,7 @@ export default function pageOne() {
                         fontStyle="normal"
                         fontSize="20px"
                         p="1">¡Bienvenido otra vez a Eventimor!</Text>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <FormControl>
                                 <FormLabel 
                                 color="#525252" 
@@ -42,7 +49,11 @@ export default function pageOne() {
                                 _hover={{
                                     color: "black",
                                   }}    
-                                type="text"/>
+                                type="email"
+                                onChange={handleInputChange}
+                                value={email}
+                                name="email"
+                                />
                             </FormControl>
                             <FormControl>
                                 <FormLabel
@@ -55,7 +66,11 @@ export default function pageOne() {
                                 _hover={{
                                     color: "black",
                                   }} 
-                                type="password"/>
+                                type="password"
+                                onChange={handleInputChange}
+                                value={password}
+                                name="password"
+                                />
                             </FormControl>
                             <Box pt="10">
                                 <Button
@@ -67,7 +82,9 @@ export default function pageOne() {
                                 fontFamily="Poppins" 
                                 fontStyle="normal"
                                 fontSize="20px"
-                                borderRadius="7px">Iniciar Sesión</Button>
+                                borderRadius="7px"
+                                type="submit"
+                                >Iniciar Sesión</Button>
                             </Box>
                         </form>
                     </Box>

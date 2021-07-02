@@ -2,8 +2,15 @@ import React from 'react'
 import '../styles/register.css'
 import VIcon from '../components/VIcon/Logo'
 import { Box, Text, FormControl, FormLabel, Input, Button, Image } from "@chakra-ui/react"
+import { useForm } from '../hooks/useForm'
 
 export default function PageTwo() {
+    const [values, handleInputChange] =useForm({name:"", lastName:"", department:"", province:"", email:"", password:""})
+    const { name, lastName, department, province, email, password} = values
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(values)
+    }
     return (
         <div>
             <div className="ConteinerFondo">
@@ -25,7 +32,7 @@ export default function PageTwo() {
                         fontStyle="normal"
                         fontSize="30px"
                         p="1">Registro</Text>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <FormControl>
                                 <FormLabel 
                                 color="#525252" 
@@ -37,7 +44,10 @@ export default function PageTwo() {
                                 _hover={{
                                     color: "black",
                                   }} 
-                                type="text"/>
+                                type="text"
+                                name="name"
+                                value={name}
+                                onChange={handleInputChange}/>
                             </FormControl>
                             <FormControl>
                                 <FormLabel 
@@ -50,7 +60,11 @@ export default function PageTwo() {
                                 _hover={{
                                     color: "black",
                                   }} 
-                                type="text"/>
+                                type="text"
+                                name="lastName"
+                                value={lastName}
+                                onChange={handleInputChange}
+                                />
                             </FormControl>
                             <FormControl>
                                 <FormLabel 
@@ -63,7 +77,11 @@ export default function PageTwo() {
                                 _hover={{
                                     color: "black",
                                   }} 
-                                type="text"/>
+                                type="text"
+                                name="department"
+                                value={department}
+                                onChange={handleInputChange}
+                                />
                             </FormControl>
                             <FormControl>
                                 <FormLabel 
@@ -76,7 +94,11 @@ export default function PageTwo() {
                                 _hover={{
                                     color: "black",
                                   }} 
-                                type="text"/>
+                                type="text"
+                                name="province"
+                                value={province}
+                                onChange={handleInputChange}
+                                />
                             </FormControl>
                             <FormControl>
                                 <FormLabel 
@@ -89,7 +111,11 @@ export default function PageTwo() {
                                 _hover={{
                                     color: "black",
                                   }} 
-                                type="email"/>
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={handleInputChange}
+                                />
                             </FormControl>
                             <FormControl>
                                 <FormLabel 
@@ -102,7 +128,11 @@ export default function PageTwo() {
                                 _hover={{
                                     color: "black",
                                   }} 
-                                type="password"/>
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={handleInputChange}
+                                />
                             </FormControl>
                             <Box pt="10">
                                 <Button 
@@ -113,7 +143,9 @@ export default function PageTwo() {
                                 fontFamily="Poppins" 
                                 fontStyle="normal"
                                 fontSize="20px"
-                                borderRadius="7px">Registrarse</Button>
+                                borderRadius="7px"
+                                type="submit"
+                                >Registrarse</Button>
                             </Box>
                         </form>
                     </Box>

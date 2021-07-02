@@ -1,28 +1,25 @@
-import React from "react";
+import React,{useContext} from "react";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Redirect
   } from "react-router-dom";
+import {PublicRoute} from "./PublicRoute"
+import {PrivateRoute} from "./PrivateRoute"
+import {DashboardPrivateRoute} from "./DashboardPrivateRoute"
+import { DataContext } from "../store/GlobalState";
 import PageOne from "../pages/PageOne";
 import PageTwo from "../pages/PageTwo";
-import Survey from "../pages/Survey"
-import Navbar from "../components/Navbar";
-import Events from "../pages/Events";
 
 export default function SourceRouter () {
+  const {state} = useContext(DataContext);
+  const {logged}=state
   return (
     <Router>
         <div>
-            <Navbar />
             <Switch>
-                <Route exact path = "/" component = {PageOne} />
-                <Route exacr path = "/pageTwo"  component = {PageTwo}/>
-                <Route exacr path = "/Survey"  component = {Survey}/>
-                <Route exacr path = "/events"  component = {Events}/>
-                <Redirect to="/" />
-
+                <PublicRoute exact path = "/login"  component = {PageOne}  isAuthenticated={logged}/>
+                <PublicRoute exact path = "/register"  component = {PageTwo}  isAuthenticated={logged}/>
+                <PrivateRoute isAuthenticated={logged} path = "/" component = {DashboardPrivateRoute} />
             </Switch>
         </div>
     </Router>

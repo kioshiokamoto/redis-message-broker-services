@@ -19,7 +19,7 @@ export default function Navbar() {
     return (
         <Box bg="secondary">
             <Flex className="wrapper-content" justify="space-between" align="center">
-                <VIcon name="logo"/>
+                {/* <VIcon name="logo"/>
                 <ul className="list-items">
                     <li>
                         <NavLink exact to="/" activeClassName="activeLink"> Mis eventos</NavLink>
@@ -53,12 +53,12 @@ export default function Navbar() {
                                     <Notification creator="Luis" event="mi matrimonio"/>
                                     <Notification creator="Rosa" event="mi matrimonio"/>
                                     <Notification creator="Juan" event="mi matrimonio"/>
-                                    <Notification creator="Roberto" event="mi matrimonio"/>
+                                    <Notification creator="Roberto" event="mi matrimonio"/> */}
                                     {/* <Flex align="center" h="full" direction="column" justify="center" w={300}>
                                         <Text color="gray" px="5" align="center" py="1"><b>No hay notificaciones</b></Text>
                                         <Text color="gray" fontSize="sm" align="center">Busca nuestra seccion de eventos y descubre lo que tenemos para ti</Text>
                                     </Flex> */}
-                                </Box>    
+                                {/* </Box>    
                             </PopoverBody>
                         </PopoverContent>
                     </Popover>
@@ -74,7 +74,22 @@ export default function Navbar() {
                             <PopoverBody> <Button>Log out</Button> </PopoverBody>
                         </PopoverContent>
                     </Popover>
-                </Flex>
+                </Flex> */}
+                <>
+                    <Text color="blue" fontSize="lg" py="5" align="center" width="100%" fontWeight="semibold">Mi panel</Text>
+                    <Popover placement="bottom-end">
+                            <PopoverTrigger>
+                                <Box px="4">
+                                    <VIcon name="avatar" color="blue" size={25} pointer/>
+                                </Box>
+                            </PopoverTrigger>
+                            <PopoverContent w="38">
+                                <PopoverArrow />
+                                <PopoverHeader><Text color="gray" fontSize="15">Cerrar sesión</Text></PopoverHeader>
+                                <PopoverBody> <Button>Log out</Button> </PopoverBody>
+                            </PopoverContent>
+                        </Popover>
+                </>
             </Flex>
         </Box>
     )

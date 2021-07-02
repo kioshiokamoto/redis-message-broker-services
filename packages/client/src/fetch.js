@@ -15,3 +15,25 @@ export const http = ( endpoint, data, method = 'GET') => {
     }
 
 }
+
+export const httpToken = (endpoint, data, method = 'GET')=> {
+    const url = `${baseUrl}/${endpoint}`;
+    if(method === 'GET') {
+        return fetch( url,{
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token') || ''
+            },
+        } );
+    }else{
+        return fetch( url , {
+            method,
+            headers: {
+                'Content-type': 'application/json',
+                'x-token': localStorage.getItem('token') || ''
+            },
+            body: JSON.stringify( data )
+        })
+    }
+}

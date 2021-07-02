@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Text,Box, Grid, Flex, Button, useDisclosure,Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter, ModalHeader, FormControl,FormLabel, Input,Select} from "@chakra-ui/react"
 import CardModal from '../components/CardModal'
+import { useForm } from '../hooks/useForm'
 export default function Events() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [values, handleInputChange, reset]=useForm({name:"", category:"",date:"", department:"", province:"", cost:"" })
+    const {name, category, date, department, province, cost}=values
+    const handleNewPublishSubmit = (e) => {
+        e.preventDefault()
+        console.log(values)
+        onClose()
+    }
+
+    useEffect(() => {
+        reset()
+    }, [isOpen])
     return (
         <>
             <div className="wrapper-content">
@@ -26,10 +38,10 @@ export default function Events() {
                 <ModalCloseButton _focus={{boxShadow:'none'}}/>
                 <ModalHeader><Text align="center" fontSize="2xl">Nuevo evento</Text></ModalHeader>
                 <ModalBody>
-                    <form>
+                    <form onSubmit={handleNewPublishSubmit}>
                         <FormControl  p="4">
                             <FormLabel>Nombre del evento</FormLabel>
-                            <Input type="text" placeholder="Escribe el nombre aquí"/>
+                            <Input type="text" placeholder="Escribe el nombre aquí" name="name" value={name} onChange={handleInputChange}/>
                         </FormControl>  
                         <Grid templateColumns="repeat(2,1fr)">
                             <FormControl  p="4">
@@ -37,38 +49,35 @@ export default function Events() {
                                 <Select
                                 placeholder="Seleccionar categoría"
                                 variant="outline"
-                                name="state"
+                                name="category" 
+                                value={category}
+                                onChange={handleInputChange}
                                 >
-                                    <option value="badstate" style={{color:'var(--black)'}}>Mal estado</option>
-                                    <option value="goodstate" style={{color:'var(--black)'}}>Buen estado</option>
+                                    <option value="category1" style={{color:'var(--black)'}}>Categoria 1</option>
+                                    <option value="category2" style={{color:'var(--black)'}}>Categoria 2</option>
                                 </Select>
                             </FormControl>
                             <FormControl  p="4">
                                 <FormLabel>Fecha</FormLabel>
-                                <Input type="date" placeholder="Seleccionar fecha" name="date"/>
+                                <Input type="date" placeholder="Seleccionar fecha" name="date" value={date} onChange={handleInputChange} />
                             </FormControl>
                             <FormControl  p="4">
                                 <FormLabel>Departamento</FormLabel>
-                                <Input type="text" placeholder="Escribe el departamento aquí"/>
+                                <Input type="text" placeholder="Escribe el departamento aquí" name="department" value={department} onChange={handleInputChange}/>
                             </FormControl>
                             <FormControl  p="4">
                                 <FormLabel>Provincia</FormLabel>
-                                <Input type="text" placeholder="Escribe el provincia aquí"/>
+                                <Input type="text" placeholder="Escribe el provincia aquí" name="province" value={province} onChange={handleInputChange}/>
                             </FormControl>
-                        </Grid>
-                        <FormControl  p="4">
-                            <FormLabel>Provincia</FormLabel>
-                            <Input type="text" placeholder="Escribe el direccion aquí"/>
-                        </FormControl>  
+                        </Grid> 
                         <FormControl  p="4">
                             <FormLabel>Costo</FormLabel>
-                            <Input type="numeral" placeholder="s/. 200"/>
+                            <Input type="numeral" placeholder="s/. 200" name="cost" value={cost} onChange={handleInputChange}/>
                         </FormControl>  
+                        <Box d="flex" justifyContent="center"><Button variant="primary" type="submit" size="lg">Aceptar</Button></Box>
                     </form>
                 </ModalBody>
-                <ModalFooter d="flex" alignItems="center" justifyContent="center">
-                    <Button variant="primary">Aceptar</Button>
-                </ModalFooter>
+
                 </ModalContent>
             </Modal>   
             </div>
