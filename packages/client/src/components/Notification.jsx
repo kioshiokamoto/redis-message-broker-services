@@ -6,7 +6,7 @@ export default function Notification({creator , event}) {
 
         <Flex color="gray" align="center" py="1">
             <VIcon name="avatar" color="blue" size={35}/>
-            <Text px="4">{creator} acaba de publicar un evento <b>{event}</b></Text>
+            <Text px="4">{creator} acaba de publicar un evento <b style={{color: "var(--secondary)"}}>{event}</b></Text>
         </Flex>
        
     )

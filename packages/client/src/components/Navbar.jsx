@@ -36,7 +36,7 @@ export default function Navbar() {
                                 <Box h="2" w="2" bg="red" borderRadius="50" position="absolute" top="0.5" left="4"></Box>
                             </Box>
                         </PopoverTrigger>
-                        <PopoverContent w="100">
+                        <PopoverContent w="150">
                             <PopoverArrow />
                             <PopoverCloseButton />
                             <PopoverHeader><Text color="gray">Mis notificaciones (0)</Text></PopoverHeader>
@@ -54,6 +54,10 @@ export default function Navbar() {
                                     <Notification creator="Rosa" event="mi matrimonio"/>
                                     <Notification creator="Juan" event="mi matrimonio"/>
                                     <Notification creator="Roberto" event="mi matrimonio"/>
+                                    {/* <Flex align="center" h="full" direction="column" justify="center" w={300}>
+                                        <Text color="gray" px="5" align="center" py="1"><b>No hay notificaciones</b></Text>
+                                        <Text color="gray" fontSize="sm" align="center">Busca nuestra seccion de eventos y descubre lo que tenemos para ti</Text>
+                                    </Flex> */}
                                 </Box>    
                             </PopoverBody>
                         </PopoverContent>
