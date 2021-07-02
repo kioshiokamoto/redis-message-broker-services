@@ -12,4 +12,5 @@ export function getColorByName (color) {
   if (color === 'black') return `var(--black)`
   if (color === 'gray') return `var(--gray)`
   if (color === 'success') return `var(--success)`
+  if (color === 'blue') return `var(--blue)`
 }

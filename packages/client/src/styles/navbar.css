@@ -1,0 +1,16 @@
+.list-items{
+    list-style: none;
+    display: flex;
+}
+
+.list-items li{
+    margin: 0 5px;
+    padding:0.5rem  1rem;
+}
+
+.activeLink{
+    color:black;
+}
+
+
+

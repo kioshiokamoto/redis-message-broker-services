@@ -12,11 +12,11 @@ const breakpoints = createBreakpoints({
 export const newTheme = extendTheme({
   breakpoints,
   colors: {
-    primary: "#FDEDC4",
-    secondary: "#832361",
+    primary: "#A179D9",
+    secondary: "#9C94F2",
     terciary: "#BA3089",
     white: "#FFFF",
-    black: "#525252"
+    blue: "#304659"
   },
   components: {
     Button,

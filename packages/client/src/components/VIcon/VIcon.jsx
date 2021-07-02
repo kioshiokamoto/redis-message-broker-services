@@ -53,6 +53,8 @@ import Message from './Message'
 import Cart from './Cart'
 import LogoDemo1 from './LogoDemo1'
 import Logo from './Logo'
+import Ring from './Ring'
+import Avatar from './Avatar'
 
 /**
  *
@@ -63,6 +65,10 @@ function VIcon ({ name, color, size, pointer, disabled = false, ...props }) {
   const style = { fontSize: `${size}px`, ...(pointer && { cursor: 'pointer' }), ...(disabled && { pointerEvents: 'none', opacity: '.5', cursor: 'default' }) }
 
   switch (name) {
+    case 'avatar':
+      return <Avatar {...props} style={style} color={_color} />
+    case 'ring':
+      return <Ring {...props} style={style} color={_color} />
     case 'logodemo1':
       return <LogoDemo1 {...props} style={style} color={_color} />
     case 'refresh':

@@ -68,6 +68,8 @@ export type IconName =
   | 'cart'
   | 'logodemo1'
   | 'logo'
+  | 'ring'
+  | 'avatar'
 
 /**
  * Props SVG, incluyendo name, color, size y weight. No se debe usar el prop style.
