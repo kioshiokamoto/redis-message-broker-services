@@ -4,7 +4,7 @@ import auth from '../middleware/auth.js';
 const router = express.Router();
 
 router.post('/register', userCtrl.register);
-router.get('/login', userCtrl.login);
+router.post('/login', userCtrl.login);
 router.post('/saveQuest', auth, userCtrl.saveQuest);
 router.get('/posts', auth, userCtrl.getAllPost);
 router.get('/categories', auth, userCtrl.getAllCategories);

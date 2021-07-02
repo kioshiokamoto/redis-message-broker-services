@@ -12,7 +12,14 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-app.use(cors());
+const corsOptions = {
+	allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
+	credentials: true,
+	methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+	origin: [, 'http://127.0.0.1:3000', 'http://localhost:3000'],
+	preflightContinue: false,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/user', userRoutes);

@@ -3,7 +3,7 @@ import adminCtrl from '../controllers/adminController.js';
 import auth from '../middleware/auth.js';
 const router = express.Router();
 
-router.get('/login', adminCtrl.login);
+router.post('/login', adminCtrl.login);
 router.post('/create', auth, adminCtrl.createPost);
 router.post('/addAdmin', adminCtrl.createAdmin);
 router.get('/categories', auth, adminCtrl.getCategories);
