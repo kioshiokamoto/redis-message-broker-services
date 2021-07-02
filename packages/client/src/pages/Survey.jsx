@@ -19,7 +19,6 @@ export default function Survey(){
         setState(s => ({ ...s, [target.name]: !s[target.name] }));
     }
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(state)

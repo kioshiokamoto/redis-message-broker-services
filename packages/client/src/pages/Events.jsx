@@ -1,10 +1,5 @@
-import React, {useEffect} from 'react'
 import { Text,Box, Grid, Flex, Button, useDisclosure,Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter, ModalHeader, FormControl,FormLabel, Input,Select} from "@chakra-ui/react"
 import CardModal from '../components/CardModal'
-import { useForm } from '../hooks/useForm'
-export default function Events() {
-    const role = "user"
-    const { isOpen, onOpen, onClose } = useDisclosure()
     const [values, handleInputChange, reset]=useForm({name:"", category:"",date:"", department:"", province:"", cost:"" })
     const {name, category, date, department, province, cost}=values
     const handleNewPublishSubmit = (e) => {
