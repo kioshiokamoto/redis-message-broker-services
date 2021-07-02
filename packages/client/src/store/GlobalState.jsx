@@ -9,7 +9,7 @@ export const DataContext = createContext({
 export const DataProvider = ({ children }) => {
   const initialState = {
     auth: {},
-    logged:true
+    logged:false
   }
   const [state, dispatch] = useReducer(reducers, initialState)
 

@@ -1,19 +1,8 @@
 import React from 'react'
 import '../styles/register.css'
 import VIcon from '../components/VIcon/Logo'
-<<<<<<< HEAD
 import { Box, Text, FormControl, FormLabel, Input, Button, Image } from "@chakra-ui/react"
 import { useForm } from '../hooks/useForm'
-=======
-import { Box, 
-    Text, 
-    FormControl, 
-    FormLabel, 
-    Input, 
-    Button, 
-    Image, 
-    Link } from "@chakra-ui/react"
->>>>>>> f3f60f7bf8fd741ab3b543ae2e1b5bfbfac9a8bf
 
 export default function PageOne() {
     const [values, handleInputChange] = useForm({ email:"", password:""})
