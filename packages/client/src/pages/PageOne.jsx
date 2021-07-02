@@ -39,21 +39,29 @@ export default function pageOne() {
                                 fontSize="18px"
                                 p="3">Correo electrónico</FormLabel>
                                 <Input borderColor="Black" 
+                                _hover={{
+                                    color: "black",
+                                  }}    
                                 type="text"/>
                             </FormControl>
                             <FormControl>
-                                <FormLabel 
+                                <FormLabel
                                 color="#525252" 
                                 fontFamily="Poppins" 
                                 fontStyle="normal" 
                                 fontSize="18px"
                                 p="3">Contraseña</FormLabel>
                                 <Input borderColor="Black"
+                                _hover={{
+                                    color: "black",
+                                  }} 
                                 type="password"/>
                             </FormControl>
-                            <Box>
+                            <Box pt="10">
                                 <Button
+                                colorScheme="#5D467C"
                                 textAlign="left" 
+                                w="400px"
                                 bg="#A179D9"
                                 color="#FFFFFF"
                                 fontFamily="Poppins" 
