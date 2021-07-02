@@ -3,6 +3,7 @@ import { Text,Box, Grid, Flex, Button, useDisclosure,Modal, ModalOverlay, ModalC
 import CardModal from '../components/CardModal'
 import { useForm } from '../hooks/useForm'
 export default function Events() {
+    const role = "user"
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [values, handleInputChange, reset]=useForm({name:"", category:"",date:"", department:"", province:"", cost:"" })
     const {name, category, date, department, province, cost}=values
@@ -18,10 +19,19 @@ export default function Events() {
     return (
         <>
             <div className="wrapper-content">
-                {/* <Text fontSize="4xl" py="5" align="center" fontWeight="semibold">Encuentra tu evento</Text>
-                <Text fontSize="md">Publicaciones para ti</Text> */}
-                <Text fontSize="4xl" py="5" align="center" fontWeight="semibold">Publicar evento</Text>
-                <Flex justify="center"><Button variant="primary"w="60" onClick={onOpen}>Nuevo</Button></Flex>
+                {
+                    (role!=="admin") ? (
+                        <>
+                            <Text fontSize="4xl" py="5" align="center" fontWeight="semibold">Encuentra tu evento</Text>
+                            <Text fontSize="md">Publicaciones para ti</Text>
+                        </>
+                    ) : (
+                        <>
+                            <Text fontSize="4xl" py="5" align="center" fontWeight="semibold">Publicar evento</Text>
+                            <Flex justify="center"><Button variant="primary"w="60" onClick={onOpen}>Nuevo</Button></Flex>
+                        </>
+                    )
+                }                
                 <Grid templateColumns="repeat(3,1fr)" py="3">
                     <CardModal name="CONTACTEC" date="12/10/12" place="Lima" department="Lima" province="Huaral" address="Jiron de la union" badge="TECNOLOGIA" cost="200"/>
                     <CardModal name="ENEISOFT" date="10/10/12" place="Arequipa" department="Misti" province="Huacambamba" address="Jiron de la union" badge="GASTRONOMIA" cost="300" />
