@@ -51,8 +51,9 @@ export default function pageOne() {
                                 <Input borderColor="Black"
                                 type="password"/>
                             </FormControl>
-                            <Box p="7">
-                                <Button width="100%"
+                            <Box>
+                                <Button
+                                textAlign="left" 
                                 bg="#A179D9"
                                 color="#FFFFFF"
                                 fontFamily="Poppins" 

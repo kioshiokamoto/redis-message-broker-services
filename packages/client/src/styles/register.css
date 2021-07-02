@@ -9,3 +9,12 @@
     align-items: center;
 }
 
+.ConteinerFondoEncuesta{
+    width: 600px;
+    display: flex;
+    float: right;
+    justify-content: center;
+    align-items: center;
+}
+
+
