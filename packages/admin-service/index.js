@@ -12,7 +12,7 @@ const corsOptions = {
 	allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
 	credentials: true,
 	methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-	origin: [, 'http://127.0.0.1:3000', 'http://localhost:3000'],
+	origin: [, 'http://127.0.0.1:3000', 'http://localhost:3000', 'https://redis-message-broker-services.vercel.app'],
 	preflightContinue: false,
 };
 app.use(cors(corsOptions));
