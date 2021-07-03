@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/register.css';
 import VIcon from '../components/VIcon/Logo';
 import { Box, Text, FormControl, FormLabel, Input, Button, Image, Link } from '@chakra-ui/react';
 import { useForm } from '../hooks/useForm';
-
+import { DataContext } from '../store/GlobalState';
+import { ACTIONS } from '../store/Actions';
 export default function PageOne() {
+	const { dispatch } = useContext(DataContext);
 	const [values, handleInputChange] = useForm({ email: '', password: '' });
 	const { email, password } = values;
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(values);
+		const res = await fetch('https://demo-2-arquitectura-client.herokuapp.com/api/user/login', {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: JSON.stringify(values),
+		});
+		if (res.status !== 200) {
+			console.log('Error de credenciales');
+			return;
+		}
+		const data = await res.json();
+		if (data?.token) {
+			localStorage.setItem('token', data.token);
+			localStorage.setItem('user', JSON.stringify(data.user));
+			//console.log(data);
+			dispatch({
+				type: ACTIONS.AUTH,
+				payload: JSON.stringify(data.user),
+			});
+			dispatch({
+				type: ACTIONS.AUTH_LOGING,
+			});
+		}
 	};
 	return (
 		<div>

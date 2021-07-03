@@ -3,6 +3,7 @@ import '../styles/register.css';
 import VIcon from '../components/VIcon/Logo';
 import { Box, Text, FormControl, FormLabel, Input, Button, Image, Link } from '@chakra-ui/react';
 import { useForm } from '../hooks/useForm';
+import { useHistory } from 'react-router-dom';
 
 export default function PageTwo() {
 	const [values, handleInputChange] = useForm({
@@ -13,10 +14,34 @@ export default function PageTwo() {
 		email: '',
 		password: '',
 	});
+	const router = useHistory();
 	const { name, lastName, department, province, email, password } = values;
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(values);
+		//console.log(values);
+		const res = await fetch('https://demo-2-arquitectura-client.herokuapp.com/api/user/register', {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: JSON.stringify({
+				email,
+				password,
+				nombre: name,
+				apellido: lastName,
+				departamento: department,
+				provincia: province,
+			}),
+		});
+		if (res.status === 500) {
+			console.log('Usuario ya existe');
+			return;
+		}
+		const data = await res.json();
+		if (!data) return;
+		console.log(data);
+		router.push('/login');
 	};
 	return (
 		<div>

@@ -26,7 +26,15 @@ const adminCtrl = {
 
 			const admin_token = createAdminToken({ id: user.idUsuario });
 
-			res.json({ token: admin_token });
+			const userReturn = {
+				rol: user[0].us_rol,
+				nombre: user[0].us_nombre,
+				apellido: user[0].us_apellido,
+				email: user[0].us_correo,
+				departamento: user[0].us_departamento,
+				provincia: user[0].us_provincia,
+			};
+			res.json({ token: admin_token, user: userReturn });
 		} catch (error) {
 			return res.status(500).json({ error: error.message });
 		}
@@ -152,7 +160,9 @@ const adminCtrl = {
 	},
 	getAllPost: async (req, res) => {
 		try {
-			const eventos = await pool.query('SELECT * FROM evento');
+			const eventos = await pool.query(`SELECT G.gn_nombreGenero AS badge,E.*
+											FROM evento E
+											inner join genero G ON(E.idGenero=G.idGenero)`);
 			res.json(eventos);
 		} catch (error) {
 			return res.status(500).json({ error: error.message });

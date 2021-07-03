@@ -44,7 +44,15 @@ const userCtrl = {
 
 			const user_token = createUserToken({ id: user[0].idUsuario });
 
-			res.json({ token: user_token });
+			const userReturn = {
+				rol: user[0].us_rol,
+				nombre: user[0].us_nombre,
+				apellido: user[0].us_apellido,
+				email: user[0].us_correo,
+				departamento: user[0].us_departamento,
+				provincia: user[0].us_provincia,
+			};
+			res.json({ token: user_token, user: userReturn });
 		} catch (error) {
 			return res.status(500).json({ error: error.message });
 		}
@@ -68,11 +76,13 @@ const userCtrl = {
 	getAllPost: async (req, res) => {
 		try {
 			const eventos = await pool.query(
-				`SELECT * FROM evento E
-											WHERE E.idGenero IN (
-											SELECT GU.idGenero 
-											FROM generoxusuario GU
-											WHERE GU.idUsuario=?); `,
+				`SELECT G.gn_nombreGenero AS badge,E.* FROM evento E
+									inner join genero G ON(E.idGenero=G.idGenero)
+									WHERE E.idGenero IN (
+									SELECT GU.idGenero
+									FROM generoxusuario GU
+									WHERE GU.idUsuario=?); `,
+
 				[req.user.id]
 			);
 			res.json(eventos);

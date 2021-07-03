@@ -40,7 +40,12 @@ client.on('message', (channel, message) => {
 	const mensaje = JSON.parse(message);
 	//console.log(JSON.parse(message));
 	//Se distribuye notificaciones a cliente
-	io.sockets.emit(mensaje.idGenero, JSON.stringify(message));
+	console.log(mensaje);
+	io.sockets.emit('eventoUsuario', JSON.stringify(message));
+});
+
+io.on('connection', (ioSocket) => {
+	console.log('se conecta');
 });
 
 const PORT = process.env.PORT || 3001;

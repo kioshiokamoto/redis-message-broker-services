@@ -13,6 +13,7 @@ const reducers = (state, action) => {
 				logged: true,
 			};
 		case ACTIONS.AUTH_LOGOUT:
+			localStorage.removeItem('user');
 			return {
 				...state,
 				logged: false,

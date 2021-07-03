@@ -29,9 +29,11 @@ export default function PageAdmin() {
 		const data = await res.json();
 		if (data?.token) {
 			localStorage.setItem('token', data.token);
+			localStorage.setItem('user', JSON.stringify(data.user));
+			//console.log(data);
 			dispatch({
 				type: ACTIONS.AUTH,
-				payload: data.token,
+				payload: JSON.stringify(data.user),
 			});
 			dispatch({
 				type: ACTIONS.AUTH_LOGING,

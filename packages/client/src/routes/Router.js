@@ -14,9 +14,10 @@ export default function SourceRouter() {
 	const { logged } = state;
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
+			const user = JSON.parse(localStorage.getItem('user'));
 			dispatch({
 				type: ACTIONS.AUTH,
-				payload: localStorage.getItem('token'),
+				payload: user,
 			});
 			dispatch({
 				type: ACTIONS.AUTH_LOGING,
