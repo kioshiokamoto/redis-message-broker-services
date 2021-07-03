@@ -17,7 +17,17 @@
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+-   Arquitectura
+
+![Arquitectura](https://github.com/kioshiokamoto/redis-message-broker-services/blob/main/images/Arquitectura.png?raw=true)
+
+-   Login
+
+![Login](https://github.com/kioshiokamoto/redis-message-broker-services/blob/main/images/login.JPG?raw=true)
+
+-   Landing Page
+
+![Login](https://github.com/kioshiokamoto/redis-message-broker-services/blob/main/images/landing.JPG?raw=true)
 
 ## Ejecutar localmente
 
